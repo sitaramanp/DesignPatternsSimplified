@@ -14,8 +14,12 @@
 #include<vector>
 #include<thread>
 
-
+//Forward declaration, as we need to store the pointer of observers in publisher
 class HwMonitorObserver;
+
+/*In case of multiple publishers, we can have an abstract publisher class and pass *this in notify() to let the observer know from which publisher the notify()
+  to let the observer know from which publisher notify() was called
+*/
 
 class HwMonitorPublisher 
 {
@@ -39,7 +43,7 @@ public:
 		while(1) // keep polling the HW continuosly 
 		{
 			NotifyHwMonitorResults();
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			std::this_thread::sleep_for(std::chrono::seconds(1)); // poll every second
 		}
 	}
 private:
@@ -51,6 +55,7 @@ class HwMonitorObserver
 public:
 	virtual void HwMonitorUpdate() = 0;
     HwMonitorObserver(std::shared_ptr<HwMonitorPublisher> publisher) { _publisher = publisher;}
+
 private:
 	//locking default and copy constructor
 	HwMonitorObserver();
