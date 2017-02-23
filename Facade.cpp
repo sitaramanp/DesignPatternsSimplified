@@ -4,6 +4,8 @@
 */
 
 /* In the example below, an user instructs an autonomus car to drive to destination, D.
+   Notice that the Facade class is just like a wrapper, encapsulating various elements of the subsystem.
+   The sybsystem is still open to be accessed individually, for the clients who needs it
 */
 
 #include <iostream>
