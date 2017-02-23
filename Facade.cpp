@@ -9,13 +9,6 @@
 #include <iostream>
 #include <string>
 
-namespace constCommands {
-	enum commands {
-		eDRIVE,
-		eSTOP
-		 
-	};
-};	
 
 class Doors
 {
