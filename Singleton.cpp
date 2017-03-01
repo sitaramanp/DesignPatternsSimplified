@@ -1,4 +1,7 @@
 /* Singleton is a pattern through which we make sure only one instance of a class is available.
+   Many people have strong arguments against the use of this pattern, if the design is good enough.
+   Another argument is Singleton would waste lot of time re-writing the code, if in an agile environment, 
+   with the change in requirements, we need multiple instances of a class
 */
 
 /* Typically in embedded systems, we would have only one instance of a HW controller. All access/control of that HW would be through
