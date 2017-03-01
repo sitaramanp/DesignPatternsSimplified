@@ -103,7 +103,9 @@ class Team // Little Facade!
 public:
 	Team()
 	{
-		_teamBatsman = std::shared_ptr<Batsman>(new Opener(std::shared_ptr<Batsman>(new MiddleOrder(std::shared_ptr<Batsman>(new TailEnder()))))); 
+		//_teamBatsman = std::shared_ptr<Batsman>(new Opener(std::shared_ptr<Batsman>(new MiddleOrder(std::shared_ptr<Batsman>(new TailEnder()))))); 
+		//std::make_shared apart from better efficiency makes it easy on the eye.
+		_teamBatsman = std::make_shared<Opener>(std::make_shared<MiddleOrder>(std::make_shared<TailEnder>()));
 	}
 	
 	void ChaseTarget(int target)
