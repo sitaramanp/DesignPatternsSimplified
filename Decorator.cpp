@@ -87,7 +87,10 @@ public:
 int main()
 {
 
-	AbstractDessert* myDomeWithMoltenCaramel = new MoltenCaramel(std::unique_ptr<AbstractDessert> (new DomeOfChoc())); 
+	std::unique_ptr<AbstractDessert> myDomeWithMoltenCaramel = std::unique_ptr<AbstractDessert>
+		(new MoltenCaramel(std::unique_ptr<AbstractDessert> (new DomeOfChoc()))); 
+	//below should be possible with c++14
+	//std::unique_ptr<AbstractDessert> myDomeWithMoltenCaramel = std::make_unique<MoltenCaramel>(std::make_unique<DomeOfChoc>());
 	myDomeWithMoltenCaramel->prepare();
 	std::cout << " Total cost = " << myDomeWithMoltenCaramel->computeCost() << std::endl;
 	
@@ -95,7 +98,10 @@ int main()
 	
 	//Interesting case. You can add mulitple decorators too
 
-	AbstractDessert* myCustomDessert = new MoltenCaramel(std::unique_ptr<AbstractDessert> (new ChocolateShavings(std::unique_ptr<AbstractDessert>(new Waffle()))));
+	std::unique_ptr<AbstractDessert> myCustomDessert = std::unique_ptr<AbstractDessert>(new MoltenCaramel(std::unique_ptr<AbstractDessert> 
+		(new ChocolateShavings(std::unique_ptr<AbstractDessert>(new Waffle())))));
+	//below should be possible with c++14
+	//std::unique_ptr<AbstractDessert> myCustomDessert = std::make_unique<MoltenCaramel>(std::make_unique<ChocolateShavings>(std::make_unique<Waffle>()));
 	myCustomDessert->prepare();
 	std::cout << " Total cost = " << myCustomDessert->computeCost() << std::endl;
 }
